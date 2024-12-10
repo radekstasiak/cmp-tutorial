@@ -9,6 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.plcoding.bookpedia.book.domain.Book
+import com.plcoding.bookpedia.book.presentation.booklist.BookListScreen
+import com.plcoding.bookpedia.book.presentation.booklist.BookListScreenRoot
+import com.plcoding.bookpedia.book.presentation.booklist.BookListState
+import com.plcoding.bookpedia.book.presentation.booklist.books
 import com.plcoding.bookpedia.book.presentation.booklist.components.BookListItem
 import com.plcoding.bookpedia.book.presentation.booklist.components.BookSearchBar
 
@@ -50,3 +54,13 @@ private fun BookListItemPreview() {
     )
 }
 
+@Preview
+@Composable
+private fun BookListScreenPreview() {
+    BookListScreen(
+        state = BookListState(
+            searchResults = books
+        ),
+        onAction = {}
+    )
+}
