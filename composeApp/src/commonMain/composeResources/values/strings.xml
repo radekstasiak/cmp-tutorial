@@ -6,6 +6,13 @@
     <string name="favourites">Favourites</string>
     <string name="no_search_results">Oops, there aren't any books for your search query.</string>
     <string name="no_favourite_book">You haven't saved any favourites books yet.</string>
+    <string name="book_cover">Book cover</string>
+    <string name="rating">Rating</string>
+    <string name="pages">Pages</string>
+    <string name="languages">Languages</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="description_not_avail">Description not available.</string>
+
     <string name="error_disk_full">Oops, it seems like your disk is full.</string>
     <string name="error_unknown">Oops, something went wrong.</string>
     <string name="error_request_timeout">The request timed out.</string>
