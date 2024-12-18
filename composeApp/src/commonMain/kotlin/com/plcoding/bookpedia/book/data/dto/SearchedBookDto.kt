@@ -14,7 +14,7 @@ data class SearchedBookDto(
     @SerialName("cover_edition_key") val coverKey: String? = null,
     @SerialName("first_publish_year") val firstPublishYear: Int? = null,
     @SerialName("ratings_average") val ratingsAverage: Double? = null,
-    @SerialName("ratings_count ") val ratingsCount: Int? = null,
-    @SerialName("number_of_pages_median ") val numPagesMedian: Int? = null,
-    @SerialName("edition_count ") val numEditions: Int? = null,
+    @SerialName("ratings_count") val ratingsCount: Int? = null,
+    @SerialName("number_of_pages_median") val numPagesMedian: Int? = null,
+    @SerialName("edition_count") val numEditions: Int? = null,
 )
