@@ -38,3 +38,19 @@ fun Book.toBookEntity(): BookEntity =
         numEditions = this.numEditions
 
     )
+
+fun BookEntity.toBook(): Book =
+    Book(
+        id = this.id,
+        title = this.title,
+        description = this.description,
+        imageUrl = this.imageUrl,
+        languages = this.languages,
+        authors = this.authors,
+        firstPublishYear = this.firstPublishYear,
+        averageRating = this.ratingsAverage,
+        ratingCount = this.ratingsCount ?: 0,
+        numPages = this.numPagesMedian,
+        numEditions = this.numEditions
+
+    )
