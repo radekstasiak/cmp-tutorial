@@ -36,7 +36,6 @@ fun Book.toBookEntity(): BookEntity =
         ratingsCount = this.ratingCount,
         numPagesMedian = this.numPages,
         numEditions = this.numEditions
-
     )
 
 fun BookEntity.toBook(): Book =
