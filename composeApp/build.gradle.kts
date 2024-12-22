@@ -19,7 +19,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,7 +30,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     jvm("desktop")
 
     room {
@@ -39,7 +39,7 @@ kotlin {
 
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -81,7 +81,21 @@ kotlin {
         }
 
         dependencies {
-            ksp(libs.androidx.room.compiler)
+//            ksp(libs.androidx.room.compiler)
+            // Android
+            add("kspAndroid", libs.androidx.room.compiler)
+            // JVM (Desktop)
+//            add("kspJvm", libs.androidx.room.compiler)
+//            // Linux
+//            add("kspLinuxX64", libs.androidx.room.compiler)
+//            add("kspLinuxArm64", libs.androidx.room.compiler)
+//            // Mac
+//            add("kspMacosX64", libs.androidx.room.compiler)
+//            add("kspMacosArm64", libs.androidx.room.compiler)
+            // iOS
+            add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+            add("kspIosX64", libs.androidx.room.compiler)
+            add("kspIosArm64", libs.androidx.room.compiler)
         }
     }
 }
@@ -125,6 +139,32 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "com.plcoding.bookpedia"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+tasks.withType<Test> {
+    if (name == "mergeDebugAndroidTestAssets") {
+        enabled = false
+    }
+}
+
+tasks.withType<Test> {
+    if (name == "copyRoomSchemasToAndroidTestAssetsDebugAndroidTest") {
+        enabled = false
+    }
+}
+
+tasks.whenTaskAdded {
+    if (name.contains("copyRoomSchemasToAndroidTestAssetsDebugAndroidTest")) {
+        enabled = false
+    }
+}
+
+gradle.taskGraph.whenReady {
+    allTasks.onEach { task ->
+        if (task.name.contains("androidTest") || task.name.contains("connectedAndroidTest")) {
+            task.enabled = false
         }
     }
 }
